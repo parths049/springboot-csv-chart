@@ -11,7 +11,7 @@
 	<groupId>com.axeman</groupId>
 	<artifactId>AxemanTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>AxemanTest</name>
 	<description>Demo project for Spring Boot</description>
 
