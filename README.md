@@ -4,3 +4,7 @@ Simple web application which takes data from the server and displays the data in
 run project using `mvn spring-boot:run`
 
 then go to http://localhost:8080/
+
+Output : 
+
+![alt text](https://i.imgur.com/cQ3INup.png)
