@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>A Web Page</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+	<hr>
+	<div class="row">
+	  <div class="col-sm-6">
+		  <table class="table table-bordered table-striped">
+		    <thead>
+		      <tr>
+		        <th>Words</th>
+		        <th>Your Score</th>
+		        <th>Avg Score</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr th:each="chart : ${chartData}">
+		        <td th:text="${chart.words}"></td>
+		        <td th:text="${chart.score}"></td>
+		        <td th:text="${chart.avgScore}"></td>
+		      </tr>
+		    </tbody>
+		  </table>
+	  </div>
+	  <div class="col-sm-6">
+	  	<div id="container"></div>
+	  </div>
+	</div>
+	<hr>
+</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    $(function () { 
+    	Highcharts.chart('container', {
+    	    title: {
+    	        text: 'Axeman Test'
+    	    },
+    	    xAxis: {
+    	    	title: {
+    	            text: 'Words'
+    	        }
+            },
+    	    yAxis: {
+    	        title: {
+    	            text: 'Score'
+    	        }
+    	    },
+    	    legend: {
+    	        layout: 'vertical',
+    	        align: 'right',
+    	        verticalAlign: 'middle'
+    	    },
+    	    series: [{
+    	        name: ' Your Score',
+    	        data: [[${score}]]
+    	    }, {
+    	        name: ' Avg Score',
+    	        data: [[${avgScore}]]
+    	    }],
+    	    responsive: {
+    	        rules: [{
+    	            condition: {
+    	                maxWidth: 500
+    	            },
+    	            chartOptions: {
+    	                legend: {
+    	                    layout: 'horizontal',
+    	                    align: 'center',
+    	                    verticalAlign: 'bottom'
+    	                }
+    	            }
+    	        }]
+    	    }
+    	});
+    	Highcharts.charts[0].xAxis[0].update({categories:[[${xAxis}]]}, true);
+    });
+    /*]]>*/
+</script>     
+</body>
+</html>
